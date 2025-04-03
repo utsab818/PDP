@@ -14,3 +14,22 @@ helmCharts:
       server:
         dev:
           enabled: true
+        
+        # dataStorage:
+        #   enabled: true
+        #   size: 100Mi
+        #   storageClass: "standard" 
+
+        # standalone:
+        #   enabled: true
+        #   config: |
+        #     storage "raft" {
+        #       path = "/vault/data"
+        #     }
+
+        #     listener "tcp" {
+        #       address     = "0.0.0.0:8200"
+        #       tls_disable = true
+        #     }
+
+        #     ui = true
