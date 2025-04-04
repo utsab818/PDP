@@ -3,11 +3,11 @@ package main
 import (
 	"log"
 
-	"github.com/anishbista60/production-devops-project/database"
-	"github.com/anishbista60/production-devops-project/models"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"github.com/utsab818/proddevopsproject/database"
+	"github.com/utsab818/proddevopsproject/models"
 )
 
 func main() {
