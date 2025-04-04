@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+- vault-secret.yaml
+- secret-store.yaml
+- externalSecret.yaml
+- hpa.yaml
+
+namespace: dev
+patches:
+- path: backend-deploy-patch.yaml

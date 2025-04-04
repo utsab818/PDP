@@ -5,3 +5,4 @@ resources:
 - namespace.yaml
 - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml
 - https://raw.githubusercontent.com/nginxinc/nginx-gateway-fabric/main/deploy/crds.yaml
+- gatewayclass.yaml

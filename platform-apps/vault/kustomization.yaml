@@ -9,7 +9,7 @@ helmCharts:
     releaseName: vault
     namespace: vault
     repo: https://helm.releases.hashicorp.com
-    version: 0.29.1  # Specify the desired version
+    version: 0.29.1
     valuesInline:
       server:
         dev:
@@ -33,3 +33,6 @@ helmCharts:
         #     }
 
         #     ui = true
+
+# set dev: enabled to false for HA mode and uncomment the part.
+# Deal with unsealing of vault.
