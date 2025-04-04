@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: test
+    notifications.argoproj.io/subscribe.on-sync-failed.slack: test
+    notifications.argoproj.io/subscribe.on-delete.slack: test
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: platform-apps/argocd
+    repoURL: https://github.com/utsab818/PDP.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

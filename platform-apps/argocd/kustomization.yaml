@@ -9,5 +9,5 @@ resources:
 
 patches:
 - path: argocd-cm.yaml
-- path: argocd-notification-cm.yaml
-- path: argocd-notification-secret.yaml
+- path: argocd-notifications-cm.yaml
+- path: argocd-notifications-secret.yaml
