@@ -6,7 +6,7 @@ resources:
   - hpa.yaml
 namespace: dev
 patches:
-  - path: frontend-dev-deploy-patch.yaml  
+  - path: frontend-deploy-patch.yaml  
     target:
       kind: Deployment
       name: frontend-deployment

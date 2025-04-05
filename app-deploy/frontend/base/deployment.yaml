@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: #image
+        image: utsab12312/frontend
         ports:
         - containerPort: 80
         env:
