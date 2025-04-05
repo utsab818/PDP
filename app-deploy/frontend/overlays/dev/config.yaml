@@ -5,5 +5,5 @@ metadata:
 data:
   config.js: |
     window._env_ = {
-      REACT_APP_API_URL: "https://anishbista60.xyz/api"
+      REACT_APP_API_URL: "https://utsabsapkota.xyz/api"
     };
