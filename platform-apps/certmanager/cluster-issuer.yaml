@@ -16,7 +16,3 @@ spec:
                 namespace: dev
                 kind: Gateway
                 group: gateway.networking.k8s.io
-              - name: argo-gateway
-                namespace: argocd
-                kind: Gateway
-                group: gateway.networking.k8s.io
