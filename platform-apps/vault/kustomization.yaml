@@ -36,3 +36,9 @@ helmCharts:
 
 # set dev: enabled to false for HA mode and uncomment the part.
 # Deal with unsealing of vault.
+
+patches:
+- path: vault-service-patch.yaml
+  target:
+    kind: Service
+    name: vault

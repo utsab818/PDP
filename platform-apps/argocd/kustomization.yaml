@@ -10,3 +10,4 @@ patches:
 - path: argocd-cm.yaml
 - path: argocd-notifications-cm.yaml
 - path: argocd-notifications-secret.yaml
+- path: argocd-cm-insecure.yaml

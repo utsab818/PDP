@@ -12,7 +12,7 @@ spec:
       - http01:
           gatewayHTTPRoute:
             parentRefs:
-              - name: my-gateway
-                namespace: dev
+              - name: nginx-gateway
+                namespace: nginx-gateway
                 kind: Gateway
                 group: gateway.networking.k8s.io

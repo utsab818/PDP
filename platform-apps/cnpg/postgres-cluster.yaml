@@ -12,20 +12,20 @@ spec:
     enablePodMonitor: false # If set to true, it would enable Prometheus monitoring for PostgreSQL metrics.
   bootstrap:
     initdb:
-      database: test
+      database: todos
       owner: utsab
       secret:
         name: cnpg-credentials
       postInitApplicationSQL:
         - |
-          CREATE TABLE IF NOT EXISTS test (
+          CREATE TABLE IF NOT EXISTS todos (
             id SERIAL PRIMARY KEY,
             title TEXT NOT NULL,
             completed BOOLEAN DEFAULT FALSE
           );
         - |
-          GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.test TO utsab;
+          GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.todos TO utsab;
         - |
-          GRANT ALL PRIVILEGES ON TABLE public.test TO utsab;
+          GRANT ALL PRIVILEGES ON TABLE public.todos TO utsab;
         - |
-          GRANT USAGE, SELECT, UPDATE ON SEQUENCE public.test_id_seq TO utsab;
+          GRANT USAGE, SELECT, UPDATE ON SEQUENCE public.todos_id_seq TO utsab;
