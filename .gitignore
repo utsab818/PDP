@@ -2,3 +2,4 @@ platform-apps/gateway-api/charts/
 platform-apps/vault/charts/
 platform-apps/external-secret-operator/charts
 slack-notification-token
+github-token
