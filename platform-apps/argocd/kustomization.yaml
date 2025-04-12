@@ -5,8 +5,11 @@ namespace: argocd
 resources:
 - namespace.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+- github-secret.yaml
 
 patches:
+- path: argocd-image-updater-configmap.yaml
 - path: argocd-cm.yaml
 - path: argocd-notifications-cm.yaml
 - path: argocd-notifications-secret.yaml
