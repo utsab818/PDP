@@ -31,7 +31,7 @@ func main() {
 	})
 
 	router.GET("/todos", func(c *gin.Context) {
-		log.Println("Fetching all todos")
+		log.Println("Fetch all todos")
 		rows, err := db.Query("SELECT id, title, completed FROM todos")
 		if err != nil {
 			log.Println("Error fetching todos:", err)

@@ -8,6 +8,7 @@ metadata:
     notifications.argoproj.io/subscribe.on-sync-failed.slack: argocdnotification
     notifications.argoproj.io/subscribe.on-delete.slack: argocdnotification
     argocd-image-updater.argoproj.io/image-list: backend=docker.io/utsab12312/backend
+    argocd-image-updater.argoproj.io/backend.force-update: "true"
     argocd-image-updater.argoproj.io/backend.update-strategy: latest
     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/production-devops-project-secret
     argocd-image-updater.argoproj.io/git-branch: main
