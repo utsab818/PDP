@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: utsab12312/frontend
+        image: docker.io/utsab12312/frontend:73c22e672cda8533d6b6c407279e53ee48ce7fef
         ports:
         - containerPort: 80
         env:
