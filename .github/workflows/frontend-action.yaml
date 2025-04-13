@@ -25,7 +25,7 @@ jobs:
       - name: Build Docker image
         working-directory: app/frontend
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }} -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest .
 
       - name: Scan image with Trivy (SCA + Vuln scan)
         uses: aquasecurity/trivy-action@master
@@ -39,3 +39,4 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
