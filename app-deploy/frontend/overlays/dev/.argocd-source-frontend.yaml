@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - utsab12312/frontend:f5f8defbd44901499b0370efd56be1a637b07474
