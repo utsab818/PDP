@@ -9,9 +9,11 @@ data:
     username: argocd
     icon: ":rocket:"
 
-  # Trigger for application deletion
+  # Trigger for application deletion (updated)
   trigger.on-delete: |
-    - when: app.status.health.status == "Missing" && app.status.operationState == nil
+    - when: app.metadata.deletionTimestamp != nil
+      send: [app-delete-slack]
+    - when: app.status.health.status == "Missing"
       send: [app-delete-slack]
 
   # Trigger for sync failure
@@ -24,12 +26,12 @@ data:
     - when: app.status.operationState != nil && app.status.operationState.phase == "Succeeded" && app.status.sync.status == "Synced"
       send: [app-sync-success-slack]
 
-  # Template for application deletion
+  # Template for application deletion (updated with safe revision check)
   template.app-delete-slack: |
     message: |
       *Application Deleted:* _{{.app.metadata.name}}_
       *Repository:* `{{.app.spec.source.repoURL}}`
-      *Last Revision:* `{{.app.status.sync.revision}}`
+      *Last Revision:* `{{if .app.status.sync.revision}}{{.app.status.sync.revision}}{{else}}-{{end}}`
       *Deletion Detected At:* {{if .context.timestamp}}{{.context.timestamp}}{{else}}{{now}}{{end}}
 
   # Template for sync failure
