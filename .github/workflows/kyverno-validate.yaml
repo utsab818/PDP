@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+    
+      - name: Install Kyverno CLI
+        uses: kyverno/action-install-cli@v0.2.0
+      - name: Check install
+        run: kyverno version
 
       - name: Install Kustomize
         run: |
@@ -21,10 +26,11 @@ jobs:
 
       - name: Render Kustomize Manifests
         run: |
-          kustomize build app-deploy/backend/overlays/dev > combined.yaml
+          kustomize build app-deploy/backend/overlays/dev > back.yaml
+          kustomize build app-deploy/frontend/overlays/dev > front.yaml
 
-      - name: Run Kyverno CLI
+      - name: Run Kyverno CLI for Validation
         run: |
-          docker run --rm -v "${{ github.workspace }}:/workspace" ghcr.io/kyverno/kyverno-cli:latest \
-            kyverno-cli apply /workspace/kyverno-policies/* \
-            --resource /workspace/combined.yaml
+          kyverno apply ./kyverno-policies/* \
+            --resource ./back.yaml \
+            --resource ./front.yaml
