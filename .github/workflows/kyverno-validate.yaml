@@ -26,5 +26,5 @@ jobs:
       - name: Run Kyverno CLI
         run: |
           docker run --rm -v "${{ github.workspace }}:/workspace" ghcr.io/kyverno/kyverno-cli:latest \
-            kyverno apply /workspace/kyverno-policies \
+            kyverno-cli apply /workspace/kyverno-policies/* \
             --resource /workspace/combined.yaml
