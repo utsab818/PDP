@@ -1,0 +1,30 @@
+name: Kyverno Policy Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Kustomize
+        run: |
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          sudo mv kustomize /usr/local/bin/
+
+      - name: Render Kustomize Manifests
+        run: |
+          kustomize build app-deploy/backend/overlays/dev > combined.yaml
+
+      - name: Run Kyverno CLI
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/workspace" ghcr.io/kyverno/kyverno-cli:latest \
+            kyverno apply /workspace/kyverno-policies \
+            --resource /workspace/combined.yaml
