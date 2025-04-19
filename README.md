@@ -1,0 +1,1 @@
+![Architecture Diagram](templates/architecture.png)
