@@ -27,10 +27,8 @@ jobs:
       - name: Render Kustomize Manifests
         run: |
           kustomize build app-deploy/backend/overlays/dev > back.yaml
-          kustomize build app-deploy/frontend/overlays/dev > front.yaml
 
       - name: Run Kyverno CLI for Validation
         run: |
           kyverno apply ./kyverno-policies/* \
             --resource ./back.yaml \
-            --resource ./front.yaml

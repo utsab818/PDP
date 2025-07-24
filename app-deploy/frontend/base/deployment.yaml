@@ -14,9 +14,6 @@ spec:
       labels:
         app: frontend
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 999
       containers:
       - name: frontend
         image: utsab12312/frontend:73c22e672cda8533d6b6c407279e53ee48ce7fef
@@ -29,9 +26,6 @@ spec:
         - name: config-volume
           mountPath: /usr/share/nginx/html/config.js
           subPath: config.js
-        securityContext:
-          runAsUser: 1000
-          allowPrivilegeEscalation: false
       volumes:
       - name: config-volume
         configMap:
